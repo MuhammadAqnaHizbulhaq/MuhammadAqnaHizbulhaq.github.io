@@ -284,5 +284,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // 9. COPY EMAIL TO CLIPBOARD WITH INTERACTIVE FEEDBACK
+    const copyEmailBtn = document.getElementById('copyEmailBtn');
+    if (copyEmailBtn) {
+        copyEmailBtn.addEventListener('click', () => {
+            const emailText = 'aqnahizbulha.work@gmail.com';
+            navigator.clipboard.writeText(emailText).then(() => {
+                const originalHTML = copyEmailBtn.innerHTML;
+                copyEmailBtn.innerHTML = '<i class="fas fa-check"></i> Email Tersalin!';
+                copyEmailBtn.style.borderColor = '#16a34a';
+                copyEmailBtn.style.color = '#16a34a';
+                
+                setTimeout(() => {
+                    copyEmailBtn.innerHTML = originalHTML;
+                    copyEmailBtn.style.borderColor = '';
+                    copyEmailBtn.style.color = '';
+                }, 2200);
+            }).catch(err => {
+                console.error('Gagal menyalin email: ', err);
+            });
+        });
+    }
+
     console.log("Muhammad Aqna Portfolio Script Active with Carousel & HD Lightbox Modal.");
 });

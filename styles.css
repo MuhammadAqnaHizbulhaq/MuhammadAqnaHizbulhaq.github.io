@@ -39,6 +39,8 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 body {
@@ -48,6 +50,8 @@ body {
     line-height: 1.68;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    width: 100%;
+    position: relative;
 }
 
 /* CONTAINER & LAYOUT */
@@ -1284,7 +1288,7 @@ input[type="range"]::-webkit-slider-thumb {
     font-size: 0.85rem;
 }
 
-/* RESPONSIVE DESIGN */
+/* RESPONSIVE DESIGN - APPLE LUXURY MOBILE EDITORIAL */
 @media (max-width: 900px) {
     .hero-container-grid, .od-wrapper, .simulator-wrapper {
         grid-template-columns: 1fr;
@@ -1292,17 +1296,33 @@ input[type="range"]::-webkit-slider-thumb {
     .hero-photo-col {
         order: -1;
         max-width: 320px;
-        margin: 0 auto;
+        margin: 0 auto 16px;
+        width: 100%;
     }
     .hero-title {
-        font-size: 2.6rem;
+        font-size: 2.5rem;
     }
     .hero-subtitle-text {
-        font-size: 1.3rem;
+        font-size: 1.25rem;
     }
 }
 
 @media (max-width: 768px) {
+    html, body {
+        overflow-x: hidden;
+    }
+
+    .container, .nav-container {
+        padding: 0 20px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .nav-logo {
+        margin-right: 0;
+        font-size: 1.05rem;
+    }
+
     .nav-menu {
         display: none;
         position: absolute;
@@ -1311,15 +1331,185 @@ input[type="range"]::-webkit-slider-thumb {
         width: 100%;
         background: #ffffff;
         flex-direction: column;
-        padding: 20px 32px;
+        padding: 20px 24px;
         border-bottom: 1px solid var(--border-subtle);
         box-shadow: var(--shadow-md);
+        gap: 16px;
     }
+    
     .nav-menu.active {
         display: flex;
     }
+    
     .hamburger {
         display: block;
+    }
+
+    .hero-section {
+        padding-top: 100px;
+        padding-bottom: 40px;
+    }
+
+    .hero-text-col {
+        text-align: center;
+    }
+
+    .badge-container {
+        justify-content: center;
+    }
+
+    .hero-title {
+        font-size: 2.1rem;
+        letter-spacing: -0.8px;
+    }
+
+    .hero-subtitle-text {
+        font-size: 1.15rem;
+    }
+
+    .hero-description {
+        font-size: 0.95rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-cta-group {
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+    }
+
+    .hero-cta-group .btn {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hero-metrics-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .about-grid, .frameworks-grid, .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .artifacts-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .artifact-card {
+        max-width: 100%;
+        padding: 20px 16px;
+    }
+
+    .artifact-tabs {
+        gap: 8px;
+        flex-direction: column;
+    }
+
+    .artifact-tab-btn {
+        font-size: 0.82rem;
+        padding: 10px 16px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .timeline-card, .about-card, .framework-card, .skill-category {
+        padding: 24px 18px;
+    }
+
+    .timeline-header, .role-title-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .od-wrapper, .simulator-wrapper {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 24px 16px;
+    }
+
+    .od-output, .simulator-output {
+        padding: 20px 16px;
+    }
+
+    .grid-9box-board {
+        gap: 6px;
+    }
+
+    .grid-9box-cell {
+        padding: 10px 4px;
+        min-height: 70px;
+    }
+
+    .cell-tag {
+        font-size: 0.72rem;
+    }
+
+    .cell-label {
+        font-size: 0.62rem;
+    }
+
+    .control-group-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .contact-card {
+        padding: 40px 20px;
+    }
+
+    .contact-info-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .contact-item {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .contact-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+    }
+
+    .contact-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .container, .nav-container {
+        padding: 0 16px;
+    }
+
+    .hero-title {
+        font-size: 1.85rem;
+    }
+
+    .hero-subtitle-text {
+        font-size: 1.05rem;
+    }
+
+    .section-title {
+        font-size: 1.55rem;
+    }
+
+    .section {
+        padding: 44px 0;
+    }
+
+    .profile-photo-card {
+        padding: 16px 12px;
     }
 }
 
