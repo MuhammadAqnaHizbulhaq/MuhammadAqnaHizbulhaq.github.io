@@ -342,5 +342,41 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    console.log("Muhammad Aqna Portfolio Script Active with Carousel & HD Lightbox Modal.");
+    // 10. DYNAMIC TOP SCROLL PROGRESS BAR
+    const scrollProgressBar = document.getElementById('scrollProgressBar');
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        if (scrollHeight > 0) {
+            const scrollPercentage = (scrollTop / scrollHeight) * 100;
+            if (scrollProgressBar) {
+                scrollProgressBar.style.width = scrollPercentage + '%';
+            }
+        }
+    }, { passive: true });
+
+    // 11. SMOOTH SCROLL REVEAL ANIMATIONS FOR CARDS & HEADERS
+    const revealElements = document.querySelectorAll('.timeline-card, .about-card, .framework-card, .artifact-card, .skill-category, .section-header');
+    revealElements.forEach(el => el.classList.add('reveal-on-scroll'));
+
+    if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            root: null,
+            threshold: 0.1,
+            rootMargin: '0px 0px -30px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    } else {
+        revealElements.forEach(el => el.classList.add('is-visible'));
+    }
+
+    console.log("Muhammad Aqna Portfolio Script Active with Scroll Progress & Reveal Animations.");
 });
