@@ -199,6 +199,34 @@ body {
     transform: translateY(-1px);
 }
 
+.nav-right-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.lang-toggle-btn {
+    background: var(--bg-alt);
+    color: var(--text-primary);
+    border: 1px solid var(--border-subtle);
+    padding: 6px 14px;
+    border-radius: 980px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: var(--transition);
+}
+
+.lang-toggle-btn:hover {
+    background: var(--accent);
+    color: #ffffff;
+    border-color: var(--accent);
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2);
+}
+
 .hamburger {
     display: none;
     font-size: 1.25rem;

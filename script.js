@@ -371,9 +371,165 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         revealElements.forEach(el => revealObserver.observe(el));
-    } else {
-        revealElements.forEach(el => el.classList.add('is-visible'));
+    // 11. BILINGUAL LANGUAGE TOGGLE SYSTEM (ID / EN)
+    const langToggleBtn = document.getElementById('langToggleBtn');
+    const langLabel = document.getElementById('langLabel');
+    
+    const i18n = {
+        id: {
+            langBtnLabel: 'EN',
+            nav_home: 'Beranda',
+            nav_about: 'Filosofi Kerja',
+            nav_exp: 'Pengalaman',
+            nav_artifacts: 'Dokumen & Hasil Kerja',
+            nav_od: 'Demo OD',
+            nav_sim: 'Analytics Simulator',
+            nav_skills: 'Kompetensi',
+            nav_contact: 'Hubungi',
+            badge_bnsp: '<i class="fas fa-certificate"></i> Certified HR Staff BNSP RI',
+            badge_mckinsey: '<i class="fas fa-award"></i> McKinsey Forward Alumnus',
+            badge_undip: '<i class="fas fa-graduation-cap"></i> Undip Psychology (Cumlaude)',
+            hero_subtitle: 'Human Resources & Organizational Development',
+            hero_desc: 'Lulusan Sarjana Psikologi Universitas Diponegoro (Cumlaude) dengan Sertifikasi Resmi Staf HR BNSP RI. Memiliki ketertarikan dan keahlian dalam <strong>Psikologi Industri & Organisasi (I/O)</strong>, <strong>People Analytics (Excel, Power BI, R, SPSS)</strong>, serta pengawasan administrasi HR dan kepatuhan hukum ketenagakerjaan.',
+            hero_cta_exp: '<i class="fas fa-briefcase"></i> Lihat Rekam Jejak Pengalaman',
+            hero_cta_art: '<i class="fas fa-folder-open"></i> Lihat Dokumen & Hasil Kerja',
+            metric_1_val: '31 SOP HR',
+            metric_1_lbl: 'Disusun & Diformalkan di DSDM UNDIP',
+            metric_2_val: '30% Efisiensi',
+            metric_2_lbl: 'Penghematan Anggaran Program KKNT',
+            metric_3_val: '2x Best Staff',
+            metric_3_lbl: 'Staf Terbaik Kind to Mind (Jan & Feb)',
+            photo_title: 'Human Resources & Organizational Development',
+            photo_linkedin: 'LinkedIn Profile',
+            photo_status: '<i class="fas fa-circle-check"></i> Terbuka untuk Peluang Karir & Kolaborasi',
+            pill_philosophy: 'PRINSIP KERJA',
+            sec_philosophy_title: 'Filosofi & Pendekatan Kerja',
+            sec_philosophy_sub: 'Pendekatan pengelolaan SDM yang berorientasi pada manusia dan kinerja organisasi',
+            pillar_1_title: '1. Empati Perilaku & Pengembangan Manusia',
+            pillar_1_desc: 'Menghargai potensi autentik setiap individu. Menciptakan lingkungan kerja yang aman secara psikologis (<em>Psychological Safety</em>) agar talenta dapat bertumbuh secara mandiri dan memberikan kontribusi terbaiknya bagi organisasi.',
+            pillar_2_title: '2. Presisi Data & Analytics Kuantitatif',
+            pillar_2_desc: 'Keputusan talenta tanpa data adalah intuisi berisiko. Memanfaatkan analisis data & pemodelan kuantitatif (Excel, Power BI, R, SPSS) untuk mengubah data SDM menjadi wawasan prediktif yang memitigasi risiko turnover dan beban kerja (WLA).',
+            pillar_3_title: '3. Pensejajaran Nilai Bisnis C-Level',
+            pillar_3_desc: 'Fungsi HR adalah mitra pertumbuhan bisnis. Setiap program pengembangan SDM harus terukur dampaknya terhadap nilai bisnis (Operating Margin, Retention Cost, dan Return on Learning Investment).',
+            pillar_4_title: '4. Integritas Tata Kelola & Legal Compliance',
+            pillar_4_desc: 'Menjaga 100% kepatuhan terhadap hukum ketenagakerjaan (UU 13/2003, PP 35/2021) dan regulasi pajak PPh 21 TER PMK 168/2023 untuk membangun sistem organisasi yang transparan dan dipercaya.',
+            pill_exp: 'REKAM JEJAK',
+            sec_exp_title: 'Pengalaman Kerja & Inisiatif HR',
+            sec_exp_sub: 'Pengalaman praktis dalam formulasi SOP, pengembangan L&D berbasis kompetensi, dan tata kelola anggaran.',
+            pill_art: 'BUKTI FISIK',
+            sec_art_title: 'Galeri Dokumen & Hasil Kerja',
+            sec_art_sub: 'Dokumen kerja nyata, instrumen asesmen, dan formulasi spreadsheet yang pernah disusun.',
+            tab_all: 'Semua Dokumen',
+            tab_analytics: 'Dashboard & Analytics Data',
+            tab_governance: 'Dokumen TOR, Modul & SOP',
+            tab_bnsp: 'Dokumen Sertifikasi BNSP',
+            tab_psychology: 'Instrumen Asesmen & Riset',
+            pill_od: 'SIMULATOR INTERAKSI OD',
+            sec_od_title: 'Visual Demo OD: 9-Box Talent Matrix',
+            sec_od_sub: 'Visualisasi sistemik evaluasi kinerja dan potensi talenta berbasis model McKinsey & Co.',
+            pill_sim: 'MODEL KUANTITATIF PREDIKTIF',
+            sec_sim_title: 'Simulator Analytics: Prediksi Flight-Risk & Retensi Karyawan',
+            sec_sim_sub: 'Model matematika interaktif untuk mengukur probabilitas risiko turnover karyawan.',
+            pill_skills: 'KEAHLIAN & KOMPETENSI',
+            sec_skills_title: 'Matriks Kompetensi HR & Tools',
+            pill_contact: 'MARI BERDISKUSI',
+            sec_contact_title: 'Mari Berdiskusi & Berkolaborasi',
+            sec_contact_sub: 'Terbuka untuk posisi HR Generalist, Organizational Development, People Analytics, dan konsultasi HR.',
+            btn_send_email: '<i class="fas fa-paper-plane"></i> Kirim Email Langsung',
+            btn_copy_email: '<i class="fas fa-copy"></i> Salin Alamat Email',
+            btn_linkedin: '<i class="fab fa-linkedin"></i> Profil LinkedIn Resmi'
+        },
+        en: {
+            langBtnLabel: 'ID',
+            nav_home: 'Home',
+            nav_about: 'Philosophy',
+            nav_exp: 'Experience',
+            nav_artifacts: 'Artifacts Vault',
+            nav_od: 'OD Demo',
+            nav_sim: 'Analytics Simulator',
+            nav_skills: 'Competencies',
+            nav_contact: 'Contact',
+            badge_bnsp: '<i class="fas fa-certificate"></i> Certified HR Staff BNSP RI',
+            badge_mckinsey: '<i class="fas fa-award"></i> McKinsey Forward Alumnus',
+            badge_undip: '<i class="fas fa-graduation-cap"></i> Undip Psychology (Cum Laude)',
+            hero_subtitle: 'Human Resources & Organizational Development',
+            hero_desc: 'Psychology Graduate from Diponegoro University (Cum Laude) with Official Certified HR Staff status (BNSP RI). Specializing in <strong>Industrial & Organizational (I/O) Psychology</strong>, <strong>People Analytics (Excel, Power BI, R, SPSS)</strong>, HR administrative governance, and labor law compliance.',
+            hero_cta_exp: '<i class="fas fa-briefcase"></i> View Experience Track Record',
+            hero_cta_art: '<i class="fas fa-folder-open"></i> View Artifacts & Evidence Vault',
+            metric_1_val: '31 HR SOPs',
+            metric_1_lbl: 'Formulated & Formalized at DSDM UNDIP',
+            metric_2_val: '30% Efficiency',
+            metric_2_lbl: 'Project Budget Savings (KKNT)',
+            metric_3_val: '2x Best Staff',
+            metric_3_lbl: 'Kind to Mind Staff of the Month (Jan & Feb)',
+            photo_title: 'Human Resources & Organizational Development',
+            photo_linkedin: 'Official LinkedIn Profile',
+            photo_status: '<i class="fas fa-circle-check"></i> Open for HR Career Opportunities & Collaboration',
+            pill_philosophy: 'WORK PRINCIPLES',
+            sec_philosophy_title: 'Work Philosophy & Approach',
+            sec_philosophy_sub: 'Human-centric HR management approach aligned with strategic organizational performance.',
+            pillar_1_title: '1. Behavioral Empathy & Human Capital Development',
+            pillar_1_desc: 'Valuing the authentic potential of every individual. Creating a psychologically safe work environment (<em>Psychological Safety</em>) to empower talent to grow autonomously and contribute at their peak performance.',
+            pillar_2_title: '2. Data Precision & Quantitative Analytics',
+            pillar_2_desc: 'Talent decisions without data are risky intuition. Leveraging data analysis and quantitative modeling (Excel, Power BI, R, SPSS) to convert HR data into predictive insights that mitigate turnover risk and workload burnout (WLA).',
+            pillar_3_title: '3. C-Level Business Value Alignment',
+            pillar_3_desc: 'The HR function is a strategic business growth partner. Every L&D and talent program must have measurable impacts on core business value (Operating Margin, Retention Cost, and Return on Learning Investment).',
+            pillar_4_title: '4. Governance Integrity & Legal Compliance',
+            pillar_4_desc: 'Maintaining 100% compliance with Indonesian Labor Law (UU 13/2003, PP 35/2021) and tax regulations (PPh 21 TER PMK 168/2023) to build transparent and trusted organizational systems.',
+            pill_exp: 'TRACK RECORD',
+            sec_exp_title: 'Work Experience & HR Initiatives',
+            sec_exp_sub: 'Practical experience in SOP formulation, competency-based L&D development, and budget governance.',
+            pill_art: 'PHYSICAL EVIDENCE',
+            sec_art_title: 'Artifacts & Evidence Vault',
+            sec_art_sub: 'Real work outputs, assessment instruments, and verified spreadsheet formulations.',
+            tab_all: 'All Documents',
+            tab_analytics: 'Dashboards & Analytics',
+            tab_governance: 'TOR, Modules & SOPs',
+            tab_bnsp: 'BNSP Certifications',
+            tab_psychology: 'Assessment & Research',
+            pill_od: 'OD INTERACTION SIMULATOR',
+            sec_od_title: 'Visual OD Demo: 9-Box Talent Matrix',
+            sec_od_sub: 'Interactive talent evaluation framework based on McKinsey & Co performance and potential model.',
+            pill_sim: 'PREDICTIVE QUANTITATIVE MODEL',
+            sec_sim_title: 'Analytics Simulator: Flight-Risk & Employee Retention Prediction',
+            sec_sim_sub: 'Interactive mathematical model predicting turnover probability based on workload and compensation.',
+            pill_skills: 'EXPERTISE & COMPETENCIES',
+            sec_skills_title: 'HR Competency Matrix & Tech Stack',
+            pill_contact: 'LET\'S CONNECT',
+            sec_contact_title: 'Let\'s Connect & Collaborate',
+            sec_contact_sub: 'Open for HR Generalist, Organizational Development, People Analytics roles, and HR consultancy.',
+            btn_send_email: '<i class="fas fa-paper-plane"></i> Send Direct Email',
+            btn_copy_email: '<i class="fas fa-copy"></i> Copy Email Address',
+            btn_linkedin: '<i class="fab fa-linkedin"></i> Official LinkedIn Profile'
+        }
+    };
+
+    let currentLang = localStorage.getItem('portfolio_lang') || 'id';
+
+    function applyLanguage(lang) {
+        currentLang = lang;
+        localStorage.setItem('portfolio_lang', lang);
+        
+        if (langLabel) langLabel.textContent = i18n[lang].langBtnLabel;
+
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (i18n[lang] && i18n[lang][key]) {
+                el.innerHTML = i18n[lang][key];
+            }
+        });
     }
 
-    console.log("Muhammad Aqna Portfolio Script Active & Fully Optimized.");
+    if (langToggleBtn) {
+        langToggleBtn.addEventListener('click', () => {
+            const nextLang = currentLang === 'id' ? 'en' : 'id';
+            applyLanguage(nextLang);
+        });
+    }
+
+    if (currentLang === 'en') {
+        applyLanguage('en');
+    }
+
+    console.log("Muhammad Aqna Portfolio Script Active & Fully Optimized with Bilingual Support (ID/EN).");
 });
