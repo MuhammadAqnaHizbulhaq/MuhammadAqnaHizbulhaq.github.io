@@ -331,7 +331,8 @@ body {
     display: flex;
     gap: 16px;
     margin-bottom: 48px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    align-items: center;
 }
 
 .btn {
@@ -346,6 +347,7 @@ body {
     transition: var(--transition);
     cursor: pointer;
     border: none;
+    white-space: nowrap;
 }
 
 .btn-primary {

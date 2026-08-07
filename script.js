@@ -552,6 +552,7 @@ document.addEventListener('DOMContentLoaded', () => {
             sec_contact_title: 'Mari Berdiskusi & Berkolaborasi',
             sec_contact_sub: 'Saya terbuka untuk diskusi profesional mengenai pengembangan organisasi, People Analytics, serta peluang kontribusi di perusahaan Anda.',
             btn_send_email: '<i class="fas fa-paper-plane"></i> Kirim Email Langsung',
+            btn_wa: '<i class="fab fa-whatsapp"></i> Chat WhatsApp',
             btn_copy_email: '<i class="fas fa-copy"></i> Salin Alamat Email',
             btn_linkedin: '<i class="fab fa-linkedin"></i> Profil LinkedIn Resmi'
         },
@@ -727,6 +728,7 @@ document.addEventListener('DOMContentLoaded', () => {
             sec_contact_title: 'Let\'s Connect & Collaborate',
             sec_contact_sub: 'Open for professional discussions regarding organizational development, People Analytics, and contribution opportunities.',
             btn_send_email: '<i class="fas fa-paper-plane"></i> Send Direct Email',
+            btn_wa: '<i class="fab fa-whatsapp"></i> WhatsApp Chat',
             btn_copy_email: '<i class="fas fa-copy"></i> Copy Email Address',
             btn_linkedin: '<i class="fab fa-linkedin"></i> Official LinkedIn Profile'
         }
