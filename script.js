@@ -19,31 +19,41 @@ document.addEventListener('DOMContentLoaded', () => {
     const carouselBtns = document.querySelectorAll('.carousel-nav');
     if (carouselBtns.length > 0) {
         carouselBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const carouselId = btn.getAttribute('data-carousel');
-                const carouselElem = document.getElementById(carouselId);
-                if (!carouselElem) return;
+            ['click', 'touchstart'].forEach(evtType => {
+                btn.addEventListener(evtType, (e) => {
+                    if (evtType === 'touchstart') {
+                        btn.dataset.touched = "true";
+                    } else if (btn.dataset.touched === "true") {
+                        delete btn.dataset.touched;
+                        return;
+                    }
+                    e.stopPropagation();
+                    e.preventDefault();
+                    
+                    const carouselId = btn.getAttribute('data-carousel');
+                    const carouselElem = document.getElementById(carouselId);
+                    if (!carouselElem) return;
 
-                const slides = carouselElem.querySelectorAll('.carousel-slide');
-                let activeIndex = -1;
+                    const slides = carouselElem.querySelectorAll('.carousel-slide');
+                    let activeIndex = -1;
 
-                slides.forEach((slide, idx) => {
-                    if (slide.classList.contains('active-slide')) {
-                        activeIndex = idx;
+                    slides.forEach((slide, idx) => {
+                        if (slide.classList.contains('active-slide')) {
+                            activeIndex = idx;
+                        }
+                    });
+
+                    if (activeIndex !== -1) {
+                        slides[activeIndex].classList.remove('active-slide');
+                        let nextIndex;
+                        if (btn.classList.contains('carousel-next')) {
+                            nextIndex = (activeIndex + 1) % slides.length;
+                        } else {
+                            nextIndex = (activeIndex - 1 + slides.length) % slides.length;
+                        }
+                        slides[nextIndex].classList.add('active-slide');
                     }
                 });
-
-                if (activeIndex !== -1) {
-                    slides[activeIndex].classList.remove('active-slide');
-                    let nextIndex;
-                    if (btn.classList.contains('carousel-next')) {
-                        nextIndex = (activeIndex + 1) % slides.length;
-                    } else {
-                        nextIndex = (activeIndex - 1 + slides.length) % slides.length;
-                    }
-                    slides[nextIndex].classList.add('active-slide');
-                }
             });
         });
     }

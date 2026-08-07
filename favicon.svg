@@ -1,13 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <!-- Pure Crisp White Background with Soft Rounded Corners -->
-  <rect x="16" y="16" width="480" height="480" rx="96" ry="96" fill="#ffffff"/>
-  
-  <!-- Subtle Ultra-Clean Border -->
-  <rect x="16" y="16" width="480" height="480" rx="96" ry="96" fill="none" stroke="#e5e5e7" stroke-width="12"/>
+  <!-- Clean 2D Crisp White Background with Soft Rounded Border -->
+  <rect x="16" y="16" width="480" height="480" rx="100" ry="100" fill="#ffffff"/>
+  <rect x="16" y="16" width="480" height="480" rx="100" ry="100" fill="none" stroke="#e5e5e7" stroke-width="12"/>
 
-  <!-- Minimalist Executive Initials MA (Clean, Spacious, Deep Charcoal) -->
-  <text x="256" y="300" font-family="-apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans', 'Inter', sans-serif" font-size="140" font-weight="700" fill="#1d1d1f" text-anchor="middle" letter-spacing="4">MA</text>
+  <!-- 2D Minimalist Soaring Falcon / Eagle Silhouette (Executive Strategic Vision Symbol - No Text) -->
+  <path fill="#0066cc" d="M256,120 C270,150 290,172 320,185 C355,200 405,195 430,208 C400,220 355,220 320,210 C290,238 280,278 285,325 C268,298 258,262 256,235 C254,262 244,298 227,325 C232,278 222,238 192,210 C157,220 112,220 82,208 C107,195 157,200 192,185 C222,172 242,150 256,120 Z"/>
   
-  <!-- Subtle Azure Accent Dot -->
-  <circle cx="256" cy="356" r="14" fill="#0066cc"/>
+  <!-- Subtle 2D Vision Dot Accent -->
+  <circle cx="256" cy="375" r="14" fill="#1d1d1f"/>
 </svg>
