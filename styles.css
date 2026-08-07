@@ -96,11 +96,12 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent), #38bdf8);
+    height: 4px;
+    background: #0066cc;
     width: 0%;
-    z-index: 1001;
-    transition: width 0.1s ease-out;
+    z-index: 99999;
+    box-shadow: 0 1px 6px rgba(0, 102, 204, 0.5);
+    transition: width 0.08s ease-out;
 }
 
 /* SCROLL REVEAL ANIMATIONS */
