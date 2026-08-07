@@ -54,7 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (artifactTabBtns.length > 0) {
         artifactTabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
                 const target = btn.getAttribute('data-target');
 
                 artifactTabBtns.forEach(b => b.classList.remove('active'));
@@ -63,8 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 artifactCards.forEach(card => {
                     const category = card.getAttribute('data-category');
                     if (target === 'all' || category === target) {
+                        card.classList.remove('hide-artifact');
                         card.style.display = 'flex';
                     } else {
+                        card.classList.add('hide-artifact');
                         card.style.display = 'none';
                     }
                 });
@@ -284,26 +287,59 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 9. COPY EMAIL TO CLIPBOARD WITH INTERACTIVE FEEDBACK
+    // 9. COPY EMAIL TO CLIPBOARD WITH INTERACTIVE FEEDBACK & FALLBACK
     const copyEmailBtn = document.getElementById('copyEmailBtn');
     if (copyEmailBtn) {
-        copyEmailBtn.addEventListener('click', () => {
+        copyEmailBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             const emailText = 'aqnahizbulha.work@gmail.com';
-            navigator.clipboard.writeText(emailText).then(() => {
+            
+            function showSuccessFeedback() {
                 const originalHTML = copyEmailBtn.innerHTML;
                 copyEmailBtn.innerHTML = '<i class="fas fa-check"></i> Email Tersalin!';
+                copyEmailBtn.style.backgroundColor = '#16a34a';
+                copyEmailBtn.style.color = '#ffffff';
                 copyEmailBtn.style.borderColor = '#16a34a';
-                copyEmailBtn.style.color = '#16a34a';
                 
                 setTimeout(() => {
                     copyEmailBtn.innerHTML = originalHTML;
-                    copyEmailBtn.style.borderColor = '';
+                    copyEmailBtn.style.backgroundColor = '';
                     copyEmailBtn.style.color = '';
-                }, 2200);
-            }).catch(err => {
-                console.error('Gagal menyalin email: ', err);
-            });
+                    copyEmailBtn.style.borderColor = '';
+                }, 2500);
+            }
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(emailText).then(showSuccessFeedback).catch(() => {
+                    fallbackCopyEmail(emailText, showSuccessFeedback);
+                });
+            } else {
+                fallbackCopyEmail(emailText, showSuccessFeedback);
+            }
         });
+    }
+
+    function fallbackCopyEmail(text, successCb) {
+        try {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.opacity = "0";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            const successful = document.execCommand('copy');
+            document.body.removeChild(textArea);
+            if (successful && successCb) {
+                successCb();
+            } else {
+                alert('Email Aqna: ' + text);
+            }
+        } catch (err) {
+            alert('Email Aqna: ' + text);
+        }
     }
 
     console.log("Muhammad Aqna Portfolio Script Active with Carousel & HD Lightbox Modal.");

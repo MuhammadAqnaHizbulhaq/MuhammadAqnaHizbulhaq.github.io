@@ -711,6 +711,10 @@ body {
     width: 100%;
 }
 
+.artifact-card.hide-artifact {
+    display: none !important;
+}
+
 .artifact-carousel {
     position: relative;
     width: 100%;
@@ -1266,10 +1270,20 @@ input[type="range"]::-webkit-slider-thumb {
     padding: 12px 24px;
     border-radius: 980px;
     border: 1px solid var(--border-subtle);
+    max-width: 100%;
+    word-break: break-all;
+}
+
+.contact-item a {
+    color: inherit;
+    text-decoration: none;
+    word-break: break-all;
+    max-width: 100%;
 }
 
 .contact-item i {
     color: var(--accent);
+    flex-shrink: 0;
 }
 
 .contact-actions {
