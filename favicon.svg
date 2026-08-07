@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0066cc"/>
+      <stop offset="100%" stop-color="#004499"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  <!-- Apple-Style Rounded Squircle Background -->
+  <rect x="32" y="32" width="448" height="448" rx="100" ry="100" fill="url(#bgGrad)" filter="url(#shadow)"/>
+  
+  <!-- Subtle Inner Border -->
+  <rect x="32" y="32" width="448" height="448" rx="100" ry="100" fill="none" stroke="#ffffff" stroke-opacity="0.2" stroke-width="6"/>
+
+  <!-- MA Executive Monogram -->
+  <text x="256" y="318" font-family="'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif" font-size="210" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="-6">MA</text>
+</svg>
