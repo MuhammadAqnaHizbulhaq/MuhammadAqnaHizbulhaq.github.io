@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
         calculateRisk();
     }
 
-    // 6. SAFE SMOOTH SCROLLING NAV
+    // 6. SAFE SMOOTH SCROLLING NAV & ADDRESS BAR HASH UPDATE
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
@@ -239,6 +239,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (target) {
                     e.preventDefault();
                     if (navMenu) navMenu.classList.remove('active');
+                    if (window.history && window.history.pushState) {
+                        window.history.pushState(null, null, href);
+                    }
                     target.scrollIntoView({
                         behavior: 'smooth',
                         block: 'start'
