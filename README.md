@@ -1,6 +1,6 @@
-# 🌐 Muhammad Aqna Hizbulhaq, S.Psi. — Executive Portfolio
+# 🌐 Muhammad Aqna Hizbulhaq, S.Psi. - Portfolio
 
-Portofolio Resmi **Muhammad Aqna Hizbulhaq, S.Psi.** — Human Resources & Organizational Development.
+Portofolio Resmi **Muhammad Aqna Hizbulhaq, S.Psi.** 
 
 - 🏆 **Certified HR Staff** — BNSP Republik Indonesia (2025)
 - 🎓 **McKinsey.org Forward Alumnus** (2026)
