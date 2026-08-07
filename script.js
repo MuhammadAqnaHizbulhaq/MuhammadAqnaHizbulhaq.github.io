@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         artifactTabBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
+                e.stopPropagation();
                 const target = btn.getAttribute('data-target');
 
                 artifactTabBtns.forEach(b => b.classList.remove('active'));
@@ -227,53 +228,42 @@ document.addEventListener('DOMContentLoaded', () => {
         calculateRisk();
     }
 
-    // 6. COPY EMAIL BUTTON INTERACTION
-    const copyEmailBtn = document.getElementById('copyEmailBtn');
-    if (copyEmailBtn) {
-        copyEmailBtn.addEventListener('click', () => {
-            navigator.clipboard.writeText('aqnahizbulha.work@gmail.com').then(() => {
-                const originalText = copyEmailBtn.innerHTML;
-                copyEmailBtn.innerHTML = `<i class="fas fa-check"></i> Email Berhasil Disalin!`;
-                copyEmailBtn.style.background = '#16a34a';
-                copyEmailBtn.style.color = '#ffffff';
-                setTimeout(() => {
-                    copyEmailBtn.innerHTML = originalText;
-                    copyEmailBtn.style.background = '';
-                    copyEmailBtn.style.color = '';
-                }, 2500);
-            });
-        });
-    }
-
-    // 7. SMOOTH SCROLLING NAV
+    // 6. SAFE SMOOTH SCROLLING NAV
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            if (navMenu) navMenu.classList.remove('active');
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+            const href = this.getAttribute('href');
+            if (!href || href === '#') return;
+            
+            try {
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    if (navMenu) navMenu.classList.remove('active');
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            } catch (err) {
+                // Ignore invalid selectors
             }
         });
     });
 
-    // 8. LIGHTBOX IMAGE FULLSCREEN ZOOM MODAL
+    // 7. LIGHTBOX IMAGE FULLSCREEN ZOOM MODAL
     const lightboxModal = document.getElementById('imageLightboxModal');
     const lightboxImg = document.getElementById('lightboxImg');
     const lightboxCaption = document.getElementById('lightboxCaption');
     const lightboxClose = document.getElementById('lightboxClose');
 
     if (lightboxModal && lightboxImg) {
-        document.querySelectorAll('.carousel-slide img').forEach(img => {
-            img.addEventListener('click', (e) => {
-                e.stopPropagation();
-                if (img.src && !img.src.includes('undefined')) {
+        document.querySelectorAll('.artifact-preview-frame').forEach(frame => {
+            frame.addEventListener('click', (e) => {
+                const activeSlideImg = frame.querySelector('.carousel-slide.active-slide img');
+                if (activeSlideImg && activeSlideImg.src) {
                     lightboxModal.style.display = 'flex';
-                    lightboxImg.src = img.src;
-                    lightboxCaption.textContent = img.alt || 'Pratinjau Dokumen High Resolution';
+                    lightboxImg.src = activeSlideImg.src;
+                    lightboxCaption.textContent = activeSlideImg.alt || 'Pratinjau Dokumen High Resolution';
                 }
             });
         });
@@ -291,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 9. COPY EMAIL TO CLIPBOARD WITH INTERACTIVE FEEDBACK & FALLBACK
+    // 8. COPY EMAIL TO CLIPBOARD WITH INTERACTIVE FEEDBACK & FALLBACK
     const copyEmailBtn = document.getElementById('copyEmailBtn');
     if (copyEmailBtn) {
         copyEmailBtn.addEventListener('click', (e) => {
@@ -346,7 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 10. DYNAMIC TOP SCROLL PROGRESS BAR
+    // 9. DYNAMIC TOP SCROLL PROGRESS BAR
     const scrollProgressBar = document.getElementById('scrollProgressBar');
     window.addEventListener('scroll', () => {
         const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -359,7 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, { passive: true });
 
-    // 11. SMOOTH SCROLL REVEAL ANIMATIONS FOR CARDS & HEADERS (EXCLUDING ARTIFACT CARDS TO ENSURE TAB FILTER VISIBILITY)
+    // 10. SMOOTH SCROLL REVEAL ANIMATIONS FOR CARDS & HEADERS
     const revealElements = document.querySelectorAll('.timeline-card, .about-card, .framework-card, .skill-category, .section-header');
     revealElements.forEach(el => el.classList.add('reveal-on-scroll'));
 
@@ -382,5 +372,5 @@ document.addEventListener('DOMContentLoaded', () => {
         revealElements.forEach(el => el.classList.add('is-visible'));
     }
 
-    console.log("Muhammad Aqna Portfolio Script Active with Scroll Progress & Reveal Animations.");
+    console.log("Muhammad Aqna Portfolio Script Active & Fully Optimized.");
 });
