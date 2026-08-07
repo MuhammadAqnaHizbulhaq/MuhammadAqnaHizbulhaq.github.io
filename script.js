@@ -371,6 +371,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         revealElements.forEach(el => revealObserver.observe(el));
+    } else {
+        revealElements.forEach(el => el.classList.add('is-visible'));
+    }
+
     // 11. BILINGUAL LANGUAGE TOGGLE SYSTEM (ID / EN)
     const langToggleBtn = document.getElementById('langToggleBtn');
     const langLabel = document.getElementById('langLabel');
@@ -382,8 +386,7 @@ document.addEventListener('DOMContentLoaded', () => {
             nav_about: 'Filosofi Kerja',
             nav_exp: 'Pengalaman',
             nav_artifacts: 'Dokumen & Hasil Kerja',
-            nav_od: 'Demo OD',
-            nav_sim: 'Analytics Simulator',
+            nav_demo: 'Demo & Simulator',
             nav_skills: 'Kompetensi',
             nav_contact: 'Hubungi',
             badge_bnsp: '<i class="fas fa-certificate"></i> Certified HR Staff BNSP RI',
@@ -413,28 +416,29 @@ document.addEventListener('DOMContentLoaded', () => {
             pillar_3_desc: 'Fungsi HR adalah mitra pertumbuhan bisnis. Setiap program pengembangan SDM harus terukur dampaknya terhadap nilai bisnis (Operating Margin, Retention Cost, dan Return on Learning Investment).',
             pillar_4_title: '4. Integritas Tata Kelola & Legal Compliance',
             pillar_4_desc: 'Menjaga 100% kepatuhan terhadap hukum ketenagakerjaan (UU 13/2003, PP 35/2021) dan regulasi pajak PPh 21 TER PMK 168/2023 untuk membangun sistem organisasi yang transparan dan dipercaya.',
-            pill_exp: 'REKAM JEJAK',
-            sec_exp_title: 'Pengalaman Kerja & Inisiatif HR',
-            sec_exp_sub: 'Pengalaman praktis dalam formulasi SOP, pengembangan L&D berbasis kompetensi, dan tata kelola anggaran.',
-            pill_art: 'BUKTI FISIK',
-            sec_art_title: 'Galeri Dokumen & Hasil Kerja',
-            sec_art_sub: 'Dokumen kerja nyata, instrumen asesmen, dan formulasi spreadsheet yang pernah disusun.',
+            pill_exp: 'REKAM JEJAK NYATA',
+            sec_exp_title: 'Pengalaman Profesional & Organisasi',
+            sec_exp_sub: 'Eksekusi Teruji dalam Optimasi Administrasi HR, Pembelajaran Kompetensi, dan Pengendalian Finansial',
+            pill_art: 'REKAM DOKUMEN PORTOFOLIO',
+            sec_art_title: 'Galeri Dokumen & Bukti Hasil Kerja',
+            sec_art_sub: 'Kompilasi Pratinjau Tangkapan Layar: Dashboard Analytics, TOR Pelatihan & Modul, Formulir BNSP, & Instrumen Psikologi',
             tab_all: 'Semua Dokumen',
             tab_analytics: 'Dashboard & Analytics Data',
             tab_governance: 'Dokumen TOR, Modul & SOP',
             tab_bnsp: 'Dokumen Sertifikasi BNSP',
             tab_psychology: 'Instrumen Asesmen & Riset',
-            pill_od: 'SIMULATOR INTERAKSI OD',
+            pill_od: 'DEMO APLIKASI INTERAKTIF',
             sec_od_title: 'Visual Demo OD: 9-Box Talent Matrix',
-            sec_od_sub: 'Visualisasi sistemik evaluasi kinerja dan potensi talenta berbasis model McKinsey & Co.',
-            pill_sim: 'MODEL KUANTITATIF PREDIKTIF',
-            sec_sim_title: 'Simulator Analytics: Prediksi Flight-Risk & Retensi Karyawan',
-            sec_sim_sub: 'Model matematika interaktif untuk mengukur probabilitas risiko turnover karyawan.',
-            pill_skills: 'KEAHLIAN & KOMPETENSI',
-            sec_skills_title: 'Matriks Kompetensi HR & Tools',
+            sec_od_sub: 'Dikembangkan Berdasarkan Framework McKinsey & Co.',
+            pill_sim: 'MODEL PREDIKTIF HR',
+            sec_sim_title: 'Workforce Flight-Risk Predictor Simulator',
+            sec_sim_sub: 'Model Prediktif Berbasis Algoritma Regresi Kuantitatif Retensi & Analisis Beban Kerja (WLA)',
+            pill_skills: 'KUALIFIKASI TERSTRUKTUR',
+            sec_skills_title: 'Matriks Kompetensi Teruji',
+            sec_skills_sub: 'Penguasaan Framework, Alat Analitik, dan Hukum Ketenagakerjaan',
             pill_contact: 'MARI BERDISKUSI',
             sec_contact_title: 'Mari Berdiskusi & Berkolaborasi',
-            sec_contact_sub: 'Terbuka untuk posisi HR Generalist, Organizational Development, People Analytics, dan konsultasi HR.',
+            sec_contact_sub: 'Saya terbuka untuk diskusi profesional mengenai pengembangan organisasi, People Analytics, serta peluang kontribusi di perusahaan Anda.',
             btn_send_email: '<i class="fas fa-paper-plane"></i> Kirim Email Langsung',
             btn_copy_email: '<i class="fas fa-copy"></i> Salin Alamat Email',
             btn_linkedin: '<i class="fab fa-linkedin"></i> Profil LinkedIn Resmi'
@@ -445,8 +449,7 @@ document.addEventListener('DOMContentLoaded', () => {
             nav_about: 'Philosophy',
             nav_exp: 'Experience',
             nav_artifacts: 'Artifacts Vault',
-            nav_od: 'OD Demo',
-            nav_sim: 'Analytics Simulator',
+            nav_demo: 'Demo & Simulators',
             nav_skills: 'Competencies',
             nav_contact: 'Contact',
             badge_bnsp: '<i class="fas fa-certificate"></i> Certified HR Staff BNSP RI',
@@ -477,27 +480,28 @@ document.addEventListener('DOMContentLoaded', () => {
             pillar_4_title: '4. Governance Integrity & Legal Compliance',
             pillar_4_desc: 'Maintaining 100% compliance with Indonesian Labor Law (UU 13/2003, PP 35/2021) and tax regulations (PPh 21 TER PMK 168/2023) to build transparent and trusted organizational systems.',
             pill_exp: 'TRACK RECORD',
-            sec_exp_title: 'Work Experience & HR Initiatives',
-            sec_exp_sub: 'Practical experience in SOP formulation, competency-based L&D development, and budget governance.',
-            pill_art: 'PHYSICAL EVIDENCE',
+            sec_exp_title: 'Professional Experience & Initiatives',
+            sec_exp_sub: 'Proven execution in HR administrative optimization, competency-based L&D, and financial governance.',
+            pill_art: 'ARTIFACTS VAULT',
             sec_art_title: 'Artifacts & Evidence Vault',
-            sec_art_sub: 'Real work outputs, assessment instruments, and verified spreadsheet formulations.',
+            sec_art_sub: 'Screenshots Compilation: Analytics Dashboards, L&D TORs & Modules, BNSP Forms, & Psychological Instruments.',
             tab_all: 'All Documents',
             tab_analytics: 'Dashboards & Analytics',
             tab_governance: 'TOR, Modules & SOPs',
             tab_bnsp: 'BNSP Certifications',
             tab_psychology: 'Assessment & Research',
-            pill_od: 'OD INTERACTION SIMULATOR',
+            pill_od: 'INTERACTIVE DEMO',
             sec_od_title: 'Visual OD Demo: 9-Box Talent Matrix',
-            sec_od_sub: 'Interactive talent evaluation framework based on McKinsey & Co performance and potential model.',
-            pill_sim: 'PREDICTIVE QUANTITATIVE MODEL',
-            sec_sim_title: 'Analytics Simulator: Flight-Risk & Employee Retention Prediction',
-            sec_sim_sub: 'Interactive mathematical model predicting turnover probability based on workload and compensation.',
-            pill_skills: 'EXPERTISE & COMPETENCIES',
-            sec_skills_title: 'HR Competency Matrix & Tech Stack',
+            sec_od_sub: 'Developed Based on McKinsey & Co. Framework.',
+            pill_sim: 'PREDICTIVE HR MODEL',
+            sec_sim_title: 'Workforce Flight-Risk Predictor Simulator',
+            sec_sim_sub: 'Predictive Model Based on Quantitative Retention Regression Algorithm & Workload Analysis (WLA)',
+            pill_skills: 'QUALIFICATIONS',
+            sec_skills_title: 'Tested Competency Matrix',
+            sec_skills_sub: 'Mastery of Frameworks, Analytical Tools, and Indonesian Labor Law',
             pill_contact: 'LET\'S CONNECT',
             sec_contact_title: 'Let\'s Connect & Collaborate',
-            sec_contact_sub: 'Open for HR Generalist, Organizational Development, People Analytics roles, and HR consultancy.',
+            sec_contact_sub: 'Open for professional discussions regarding organizational development, People Analytics, and contribution opportunities.',
             btn_send_email: '<i class="fas fa-paper-plane"></i> Send Direct Email',
             btn_copy_email: '<i class="fas fa-copy"></i> Copy Email Address',
             btn_linkedin: '<i class="fab fa-linkedin"></i> Official LinkedIn Profile'
@@ -521,7 +525,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (langToggleBtn) {
-        langToggleBtn.addEventListener('click', () => {
+        langToggleBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             const nextLang = currentLang === 'id' ? 'en' : 'id';
             applyLanguage(nextLang);
         });
@@ -531,5 +537,5 @@ document.addEventListener('DOMContentLoaded', () => {
         applyLanguage('en');
     }
 
-    console.log("Muhammad Aqna Portfolio Script Active & Fully Optimized with Bilingual Support (ID/EN).");
+    console.log("Muhammad Aqna Portfolio Script Active & Fully Optimized.");
 });
