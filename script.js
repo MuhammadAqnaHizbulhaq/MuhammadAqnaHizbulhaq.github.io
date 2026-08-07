@@ -19,41 +19,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const carouselBtns = document.querySelectorAll('.carousel-nav');
     if (carouselBtns.length > 0) {
         carouselBtns.forEach(btn => {
-            ['click', 'touchstart'].forEach(evtType => {
-                btn.addEventListener(evtType, (e) => {
-                    if (evtType === 'touchstart') {
-                        btn.dataset.touched = "true";
-                    } else if (btn.dataset.touched === "true") {
-                        delete btn.dataset.touched;
-                        return;
-                    }
-                    e.stopPropagation();
-                    e.preventDefault();
-                    
-                    const carouselId = btn.getAttribute('data-carousel');
-                    const carouselElem = document.getElementById(carouselId);
-                    if (!carouselElem) return;
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const carouselId = btn.getAttribute('data-carousel');
+                const carouselElem = document.getElementById(carouselId);
+                if (!carouselElem) return;
 
-                    const slides = carouselElem.querySelectorAll('.carousel-slide');
-                    let activeIndex = -1;
+                const slides = carouselElem.querySelectorAll('.carousel-slide');
+                let activeIndex = -1;
 
-                    slides.forEach((slide, idx) => {
-                        if (slide.classList.contains('active-slide')) {
-                            activeIndex = idx;
-                        }
-                    });
-
-                    if (activeIndex !== -1) {
-                        slides[activeIndex].classList.remove('active-slide');
-                        let nextIndex;
-                        if (btn.classList.contains('carousel-next')) {
-                            nextIndex = (activeIndex + 1) % slides.length;
-                        } else {
-                            nextIndex = (activeIndex - 1 + slides.length) % slides.length;
-                        }
-                        slides[nextIndex].classList.add('active-slide');
+                slides.forEach((slide, idx) => {
+                    if (slide.classList.contains('active-slide')) {
+                        activeIndex = idx;
                     }
                 });
+
+                if (activeIndex !== -1) {
+                    slides[activeIndex].classList.remove('active-slide');
+                    let nextIndex;
+                    if (btn.classList.contains('carousel-next')) {
+                        nextIndex = (activeIndex + 1) % slides.length;
+                    } else {
+                        nextIndex = (activeIndex - 1 + slides.length) % slides.length;
+                    }
+                    slides[nextIndex].classList.add('active-slide');
+                }
             });
         });
     }
@@ -76,6 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (target === 'all' || category === target) {
                         card.classList.remove('hide-artifact');
                         card.style.display = 'flex';
+                        card.style.opacity = '1';
+                        card.style.transform = 'none';
                     } else {
                         card.classList.add('hide-artifact');
                         card.style.display = 'none';
@@ -365,8 +359,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, { passive: true });
 
-    // 11. SMOOTH SCROLL REVEAL ANIMATIONS FOR CARDS & HEADERS
-    const revealElements = document.querySelectorAll('.timeline-card, .about-card, .framework-card, .artifact-card, .skill-category, .section-header');
+    // 11. SMOOTH SCROLL REVEAL ANIMATIONS FOR CARDS & HEADERS (EXCLUDING ARTIFACT CARDS TO ENSURE TAB FILTER VISIBILITY)
+    const revealElements = document.querySelectorAll('.timeline-card, .about-card, .framework-card, .skill-category, .section-header');
     revealElements.forEach(el => el.classList.add('reveal-on-scroll'));
 
     if ('IntersectionObserver' in window) {
